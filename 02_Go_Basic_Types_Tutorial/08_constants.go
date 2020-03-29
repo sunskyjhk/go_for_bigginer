@@ -1,5 +1,6 @@
 package main
 
+/*
 func main() {
 	const meaningOfLife = 42
 	meaningOfLife = 32
@@ -7,3 +8,4 @@ func main() {
 	// error: "cannot assign to meaningOfLife"
 	print(meaningOfLife)
 }
+*/

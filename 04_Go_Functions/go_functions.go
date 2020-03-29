@@ -1,18 +1,19 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 )
 
 func main() {
 	fmt.Println("Hello World")
-	name := myfunction("John", "Lee")
+	name := MyFunction("John", "Lee")
 	fmt.Println(name)
 
 	// we can assign the results to multiple variables
 	// by defining their names in a comma separated list
 	// like so:
-	fullName, err := myfunction2("Henry", "Ford")
+	fullName, err := MyFunctionWithError("Henry", "Ford")
 	if err != nil {
 		fmt.Println("Handle Error Case")
 	}
@@ -24,15 +25,25 @@ func main() {
 	fmt.Println(myFunc()) // 3
 	fmt.Println(myFunc()) // 4
 	fmt.Println(myFunc()) // 5
+
+	// Challenge Result
+	sum := Add(3, 5)
+	fmt.Println(sum)
 }
 
-func myfunction(firstName string, lastName string) string {
+func MyFunction(firstName string, lastName string) string {
 	fullname := firstName + " " + lastName
 	return fullname
 }
 
 // multiple results from a function
-func myfunction2(firstName string, lastName string) (string, error) {
+func MyFunctionWithError(firstName string, lastName string) (string, error) {
+	if len(firstName) <= 1 {
+		return "", errors.New("First Name Must Be At Least 2 letters long")
+	}
+
+	// if the first name passes the check, we return the
+	// concatenated names and a nil error value
 	return firstName + " " + lastName, nil
 }
 
@@ -49,4 +60,10 @@ func addOne() func() int {
 		x++
 		return x + 1
 	}
+}
+
+// Challenge
+
+func Add(num1 int, num2 int) int {
+	return num1 + num2
 }
